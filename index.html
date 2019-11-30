@@ -27,12 +27,310 @@
             <div class="slides">
                 <section data-markdown>
                     <textarea data-template>
-                        ## Page title
-
-                        A paragraph with some text and a [link](http://hakim.se).
+                        ## Hello world!
                     </textarea>
                 </section>
-                <section>Slide 2</section>
+                <section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ## Why choose React?
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### 1. Declarative
+                            In React, you describe what to render (instead of telling the browser how to do it). This also means that the amount of boilerplate is greatly reduced.
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### 2. Clear syntax
+                            JSX in React feels just like HTML, there’s no special syntax to learn
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### 3. Learning curve
+                            Learning curve is very important when picking a UI framework. If you know JavaScript then you can probably start writing React code in a single day.
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### 4. Functional
+                            In React, all of the UI can be expressed as a set of pure functions.
+                        </textarea>
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ## Installing react.js
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### 1. React as a library
+                            ```html
+                            <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+                            <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+                            <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+                            ```
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### 2. create-react-app
+                            Make sure that you have Node.js installed and if not, you can download it from here: [https://nodejs.org/en/download](https://nodejs.org/en/download).
+
+                            To install create-react-app globally:
+                            ```
+                            npm i -g create-react-app
+                            ```
+
+                            Then to build your project run:
+                            ```
+                            create-react-app react-intro
+                            ```
+
+                            To start the application use these commands:
+                            ```
+                            cd react-intro
+                            npm start
+                            ```
+                        </textarea>
+                    </section>
+                </section>
+                <section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### index.html
+                            ```html
+                            <body>
+                                <div id="root"></div>
+                                <script type="text/babel">
+
+                                  ReactDOM.render(
+                                      <h1>Hello, world!</h1>,
+                                      document.getElementById('root')
+                                  );
+
+                                </script>
+                            </body>
+                            ```
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### index.html
+                            ```html
+                            <body>
+                                <div id="root"></div>
+                                <script type="text/babel">
+
+                                  const App = () => {
+                                      return <p>App component</p>
+                                  };
+
+                                  ReactDOM.render(
+                                      <App />,
+                                      document.getElementById('root')
+                                  );
+                                </script>
+                            </body>
+                            ```
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### Add.js
+                            ```js
+                            import React from 'react';
+
+                            class Add extends React.Component {
+                                state = {
+                                    name: '',
+                            ...
+                            ```
+                        </textarea>
+                    </section>
+                </section>
+                <section data-markdown>
+                        <textarea data-template>
+                            ### Functions and classes
+                            ```html
+                            <script type="text/babel">
+
+                            const App = () => {
+                              return <p>App component</p>
+                            };
+
+                            class BigApp extends React.Component {
+                              render() {
+                                  return (
+                                      <div>
+                                          <h1>BigApp component</h1>
+                                          <p className='name'>Components can be nested within each other.</p>
+                                          <App/>
+                                      </div>
+                                  )
+                              }
+                            }
+
+                            ReactDOM.render(
+                              <BigApp />,
+                              document.getElementById('root')
+                            );
+                            </script>
+                            ```
+                        </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### Props
+                        ```
+                        const person = {name: Mike, surname: Wazowski};
+                        <MyComponent data={person} another_prop={[1,2,3,4,5]} />
+                        ```
+
+                        ```
+                        this.props.data - object {name: Mike, surname: Wazowski}
+                        this.props.another_prop - array [1,2,3,4,5]
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                        <textarea data-template>
+                            ### Single Responsibility Principle
+                            Module should do one thing, and it should do it well.
+                        </textarea>
+                </section>
+                <section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### State
+                            ```
+                            class Article extends React.Component {
+                                state = {
+                                    visible: false // initial state
+                                }
+
+                                render() {
+                                    const { author, text, bigText } = this.props.data
+
+                                    return (
+                                        <div className='article'>
+                                            <p className='news__author'>{author}:</p>
+                                            <p className='news__text'>{text}</p>
+                                            <a href="#" className='news__readmore'>Detail</a>
+                                            <p className='news__big-text'>{bigText}</p>
+                                        </div>
+                                    )
+                                }
+                            }
+                            ```
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### State
+                            ```
+                            class Article extends React.Component {
+                                state = {
+                                    visible: false
+                                }
+
+                                render() {
+                                    const { author, text, bigText } = this.props.data
+                                    const { visible } = this.state // get visible from this.state
+
+                                    return (
+                                        <div className='article'>
+                                            <p className='news__author'>{author}:</p>
+                                            <p className='news__text'>{text}</p>
+                                            { /* if not visible - hide */
+                                            !visible && <a href="#" className='news__readmore'>Detail</a>
+                                            }
+                                            { /* if visible - show */
+                                            visible && <p className='news__big-text'>{bigText}</p>
+                                            }
+                                        </div>
+                                    )
+                                }
+                            }
+                            ```
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### Updating the state
+                            ```js
+                            this.setState(...)
+
+                            ...
+                            state = {
+                              visible: false,
+                              rating: 0,
+                              another_property: 'qweqwe'
+                            }
+                            ...
+                            To change the rating, you need to write the following setState:
+                            this.setState({rating: 100500})
+
+                            To change all three properties:
+                            this.setState({
+                                rating: 100500,
+                                visible: true,
+                                another_property: 'gsgdsgsg'
+                            })
+                            ```
+
+                        </textarea>
+                    </section>
+                    <section data-markdown data-vertical="^\n\n">
+                        <textarea data-template>
+                            ### State
+                            ```js
+                            ...
+                            readmoreClick: function(e) {
+                                e.preventDefault();
+                                this.setState({ visible: true }, () => {
+                                  alert('State changed');
+                                });
+                              },
+                            ...
+                            ```
+                        </textarea>
+                    </section>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### Styling
+                        with classes
+                        ```
+                        render() {
+                            return <span className="menu">Menu</span>
+                        }
+                        ```
+                        or inline
+                        ```
+                        const divStyle = {
+                            color: 'blue',
+                            backgroundImage: 'url(' + imgUrl + ')',
+                        };
+
+                        function HelloWorldComponent() {
+                            return <div style={divStyle}>Hello World!</div>;
+                        }
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### What’s next?
+                        I would strongly recommend you to check out this article:
+                        [https://legacy.gitbook.com/book/maxfarseer/react-course-ru/](https://legacy.gitbook.com/book/maxfarseer/react-course-ru/)
+                    </textarea>
+                </section>
             </div>
         </div>
 
