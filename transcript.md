@@ -119,8 +119,8 @@ In our case, if we talk about stateful, we get:
 ``` js
 this.props.data - object {name: Mike, surname: Wazowski}
 this.props.another_prop - array [1,2,3,4,5]
-this.props can be used for read-only!
 ```
+```this.props``` can be used for read-only!
 ```html
 <slide props>
 ```
